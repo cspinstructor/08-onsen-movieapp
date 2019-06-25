@@ -1,0 +1,45 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left">
+      <div class="left"><ons-back-button>Home</ons-back-button></div>
+    </div>
+    <div class="center" style="text-align: center">Icon list demo</div>
+    <div class="right">
+      <ons-toolbar-button onclick="fn.open()">
+        <ons-icon icon="md-menu"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+
+  <ons-list>
+    <ons-list-header>Fruits</ons-list-header>
+    <ons-list-item
+      tappable
+      modifier="chevron"
+      onclick="fn.load('apple.html','Apple')"
+    >
+      <div class="left">
+        <img class="list-item__thumbnail" src="images/apple.jpg" />
+      </div>
+      <div class="center">
+        <span class="list-item__title">Apple</span
+        ><span class="list-item__subtitle">Nice juicy apple</span>
+      </div>
+    </ons-list-item>
+    <ons-list-item
+      tappable
+      modifier="chevron"
+      onclick="fn.load('banana.html','Banana')"
+    >
+      <div class="left">
+        <img class="list-item__thumbnail" src="images/banana.jpg" />
+      </div>
+      <div class="center">
+        <span class="list-item__title">Banana</span
+        ><span class="list-item__subtitle"
+          >Yellow delicious and nutritious local fruit</span
+        >
+      </div>
+    </ons-list-item>
+  </ons-list>
+</ons-page>

@@ -1,0 +1,28 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left">
+      <div class="left"><ons-back-button>Home</ons-back-button></div>
+    </div>
+    <div class="center" style="text-align: center">Movies Search</div>
+    <div class="right">
+      <ons-toolbar-button onclick="fn.open()">
+        <ons-icon icon="md-menu"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  <div style="text-align: center; margin-top: 20px">
+    <p>Enter movie name and click Search</p>
+    <p>
+      <ons-input
+        id="moviename"
+        modifier="underbar"
+        placeholder="Enter name"
+        float
+      ></ons-input>
+    </p>
+    <p><ons-button onclick="searchMovie()">Search</ons-button></p>
+    <p><ons-button onclick="clearInput()">Clear</ons-button></p>
+  </div>
+  <div id="result"></div>
+  <img src="" id="movieposter" style="width: 100%" />
+</ons-page>
