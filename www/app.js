@@ -19,8 +19,7 @@ document.addEventListener('init', function(event) {
       '<br>' +
       'Plot: ' +
       movieData.Plot;
-    console.log('...content: ' + content);
-    //document.getElementById('result').innerHTML = content;
+
     $('#result').html(content);
     $('#movieposter').attr('src', movieData.Poster);
   }
@@ -55,6 +54,8 @@ function stopProgressCirle() {
 
 var movieData;
 function searchMovie() {
+  $('.progress-circular').css('visibility', 'visible');
+
   var name = document.getElementById('moviename').value;
   var url = 'http://www.omdbapi.com/?t=' + name + '&apikey=84fcccc4';
 
@@ -65,31 +66,15 @@ function searchMovie() {
         return;
       }
       movieData = data;
-      console.log(
-        'Source: ' +
-          data.Ratings[0].Source +
-          ', Value: ' +
-          data.Ratings[0].Value
-      );
-      // $('#result').html(
-      //   'Title: ' +
-      //     data.Title +
-      //     '<br>' +
-      //     'Year: ' +
-      //     data.Year +
-      //     '<br>' +
-      //     'Plot: ' +
-      //     data.Plot
-      // );
-      // $('#movieposter').attr('src', data.Poster);
+
       var navigator = document.getElementById('myNavigator');
       var menu = document.getElementById('menu');
       data = { data: { title: 'Search result' }, animation: 'slide' };
       navigator.pushPage('result.html', data).then(menu.close.bind(menu));
+      $('.progress-circular').css('visibility', 'hidden');
     })
     .fail(function() {
-      console.log('...movie not found....');
-      //$('#result').html(name + ' not found!');
+      ons.notification.toast('Connection Error', { timeout: 2000 });
     });
 }
 
