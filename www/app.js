@@ -1,6 +1,7 @@
 window.fn = {};
 
 window.fn.open = function() {
+  //id menu is in index.html, the side splitter
   var menu = document.getElementById('menu');
   menu.open();
 };
@@ -59,6 +60,10 @@ function searchMovie() {
 
   $.ajax(url)
     .done(function(data) {
+      if (!data.Title) {
+        ons.notification.toast('Movie not found', { timeout: 2000 });
+        return;
+      }
       movieData = data;
       console.log(
         'Source: ' +
@@ -66,27 +71,28 @@ function searchMovie() {
           ', Value: ' +
           data.Ratings[0].Value
       );
-      $('#result').html(
-        'Title: ' +
-          data.Title +
-          '<br>' +
-          'Year: ' +
-          data.Year +
-          '<br>' +
-          'Plot: ' +
-          data.Plot
-      );
-      $('#movieposter').attr('src', data.Poster);
+      // $('#result').html(
+      //   'Title: ' +
+      //     data.Title +
+      //     '<br>' +
+      //     'Year: ' +
+      //     data.Year +
+      //     '<br>' +
+      //     'Plot: ' +
+      //     data.Plot
+      // );
+      // $('#movieposter').attr('src', data.Poster);
       var navigator = document.getElementById('myNavigator');
       var menu = document.getElementById('menu');
       data = { data: { title: 'Search result' }, animation: 'slide' };
       navigator.pushPage('result.html', data).then(menu.close.bind(menu));
     })
     .fail(function() {
-      $('#result').html(name + ' not found!');
+      console.log('...movie not found....');
+      //$('#result').html(name + ' not found!');
     });
 }
 
 function clearInput() {
-  document.getElementById('pokemonname').value = '';
+  document.getElementById('moviename').value = '';
 }
